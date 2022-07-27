@@ -27,5 +27,8 @@ set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
 set -g fish_color_user brgreen
 set -g fish_color_valid_path --underline
 
+# Update path
+fish_add_path ~/.local/bin
+
 # Starship prompt (https://starship.rs/)
 starship init fish | source
