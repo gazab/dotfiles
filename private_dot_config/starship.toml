@@ -1,0 +1,93 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[kubernetes]
+disabled = true
+
+[custom.file_number]
+command = "find . -maxdepth 1 -type f -not -name '.DS_Store' | wc -l"
+when = "exit 0"                                                       # run always
+symbol = " "
+description = "Number of files in the current working directory"
+format = '[$symbol$output]($style) '
+style = "fg:yellow"                                                   # terminus different
+
+[custom.folder_number]
+command = "find . -maxdepth 1 -type d -not -name '.git' -not -name '.' | wc -l"
+when = "exit 0"
+symbol = " "
+description = "Number of folders in the current working directory"
+format = '[$symbol$output]($style) '
+style = "fg:yellow"                                                             # terminus different
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
+[rust]
+symbol = " "
