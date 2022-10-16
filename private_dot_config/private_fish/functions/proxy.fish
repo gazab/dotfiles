@@ -78,6 +78,15 @@ function proxy -a cmd -d "Handles proxy settings"
         for i in (seq (count $NO_PROXY_ENVS))
             set -xU $NO_PROXY_ENVS[$i] $STANDARD_NO_PROXY
 		end
+
+        git config --global http.proxy $STANDARD_PROXY &>/dev/null
+        git config --global https.proxy $STANDARD_PROXY &>/dev/null
+
+        npm config set proxy $STANDARD_PROXY &>/dev/null
+        npm config set https-proxy $STANDARD_PROXY &>/dev/null
+
+        yarn config set proxy $STANDARD_PROXY &>/dev/null
+        yarn config set https-proxy $STANDARD_PROXY &>/dev/null
         
         return 0
     end
@@ -91,6 +100,15 @@ function proxy -a cmd -d "Handles proxy settings"
         for i in (seq (count $NO_PROXY_ENVS))
             set -eU $NO_PROXY_ENVS[$i]
 		end
+
+        git config --global --unset http.proxy &>/dev/null
+        git config --global --unset https.proxy &>/dev/null
+
+        npm config delete proxy &>/dev/null
+        npm config delete https-proxy &>/dev/null
+
+        yarn config delete proxy &>/dev/null
+        yarn config delete https-proxy &>/dev/null
         
         return 0
     end
