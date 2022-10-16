@@ -87,7 +87,13 @@ function proxy -a cmd -d "Handles proxy settings"
 
         yarn config set proxy $STANDARD_PROXY &>/dev/null
         yarn config set https-proxy $STANDARD_PROXY &>/dev/null
-        
+
+        echo "
+        Acquire::http::Proxy \"$STANDARD_PROXY\";
+        Acquire::https::Proxy \"$STANDARD_PROXY\";
+        Acquire::ftp::Proxy \"$STANDARD_PROXY\";
+        " | sudo tee /etc/apt/apt.conf.d/90-proxy &>/dev/null
+
         return 0
     end
 
@@ -109,6 +115,12 @@ function proxy -a cmd -d "Handles proxy settings"
 
         yarn config delete proxy &>/dev/null
         yarn config delete https-proxy &>/dev/null
+
+        echo "
+        Acquire::http::Proxy \"false\";
+        Acquire::https::Proxy \"false\";
+        Acquire::ftp::Proxy \"false\";
+        " | sudo tee /etc/apt/apt.conf.d/90-proxy &>/dev/null
         
         return 0
     end
