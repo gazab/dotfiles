@@ -23,6 +23,22 @@ description = "Number of folders in the current working directory"
 format = '[$symbol$output]($style) '
 style = "fg:yellow"                                                             # terminus different
 
+[custom.proxy_is_on]
+command = ""
+when = "proxy is-on"
+symbol = "歷 "
+description = "Shows if proxy settings are on"
+format = "[$symbol]($style)"
+style = "fg:green"
+
+[custom.proxy_is_off]
+command = ""
+when = "proxy is-off"
+symbol = "轢 "
+description = "Shows if proxy settings are off"
+format = "[$symbol]($style)"
+style = "fg:red"
+
 [aws]
 symbol = "  "
 
