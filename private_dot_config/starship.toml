@@ -4,13 +4,13 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-[kubernetes]
-disabled = true
+# Format
+format = """$all$kubernetes$battery$line_break$character$prompt"""
 
 [custom.file_number]
 command = "find . -maxdepth 1 -type f -not -name '.DS_Store' | wc -l"
 when = "exit 0"                                                       # run always
-symbol = " "
+symbol = "📃 "
 description = "Number of files in the current working directory"
 format = '[$symbol$output]($style) '
 style = "fg:yellow"                                                   # terminus different
@@ -18,7 +18,7 @@ style = "fg:yellow"                                                   # terminus
 [custom.folder_number]
 command = "find . -maxdepth 1 -type d -not -name '.git' -not -name '.' | wc -l"
 when = "exit 0"
-symbol = " "
+symbol = "📁 "
 description = "Number of folders in the current working directory"
 format = '[$symbol$output]($style) '
 style = "fg:yellow"                                                             # terminus different
@@ -26,7 +26,7 @@ style = "fg:yellow"                                                             
 [custom.proxy_is_on]
 command = ""
 when = "proxy is-on"
-symbol = "歷 "
+symbol = "歷"
 description = "Shows if proxy settings are on"
 format = "[$symbol]($style)"
 style = "fg:green"
@@ -34,10 +34,30 @@ style = "fg:green"
 [custom.proxy_is_off]
 command = ""
 when = "proxy is-off"
-symbol = "轢 "
+symbol = "轢"
 description = "Shows if proxy settings are off"
 format = "[$symbol]($style)"
 style = "fg:red"
+
+[kubernetes]
+format = '[⛵ $context \($namespace\)](blue)'
+disabled = false
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+".*/openshift-cluster/.*" = "openshift"
+"gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster"
+[kubernetes.user_aliases]
+"dev.local.cluster.k8s" = "dev"
+"root/.*" = "root"
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
 
 [aws]
 symbol = "  "
