@@ -23,8 +23,11 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
+  programs.fish.enable = true;
+
   users.users.gazab = {
     isNormalUser = true;
+    shell = pkgs.fish;
     description = "gazab";
     extraGroups = [ "wheel" ];
   };
