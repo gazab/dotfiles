@@ -20,6 +20,7 @@
         lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
         rbi = "rebase -i";
         st = "status";
+        web = "!gh browse";
       };
     };
   };
