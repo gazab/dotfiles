@@ -41,5 +41,12 @@
     extensions = [ pkgs.gh-s ];
   };
 
+  programs.bash.enable = true;
+
+  programs.starship = {
+    enable = true;
+    settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+  };
+
   programs.claude-code.enable = true;
 }
