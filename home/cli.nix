@@ -42,7 +42,12 @@
     extensions = [ pkgs.gh-s ];
   };
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      k = "kubectl";
+    };
+  };
 
   programs.starship = {
     enable = true;
