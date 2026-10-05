@@ -39,6 +39,7 @@
     wget
     vim
     kubectl
+    kubeswitch
     dnsutils
   ];
 }

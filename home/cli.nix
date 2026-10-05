@@ -46,6 +46,8 @@
     enable = true;
     shellAliases = {
       k = "kubectl";
+      ks = "switcher";
+      kn = "switcher ns";
     };
   };
 
