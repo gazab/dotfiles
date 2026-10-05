@@ -38,5 +38,7 @@
     curl
     wget
     vim
+    kubectl
+    dnsutils
   ];
 }
