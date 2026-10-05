@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -12,6 +12,9 @@
 
   networking.networkmanager.enable = true;
   users.users.gazab.extraGroups = [ "networkmanager" ];
+
+  allowedUnfreePackages = [ "vscode" ];
+  environment.systemPackages = [ pkgs.vscode ];
 
   # Do not change after install; see `man configuration.nix`.
   system.stateVersion = "26.05";
