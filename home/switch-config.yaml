@@ -1,0 +1,9 @@
+kind: SwitchConfig
+version: "v1alpha1"
+kubeconfigStores:
+  - kind: gke
+    config:
+      authentication:
+        authenticationType: gcloud
+      projectIDs:
+      - gazab-mainframe

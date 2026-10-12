@@ -41,5 +41,6 @@
     kubectl
     kubeswitch
     dnsutils
+    google-cloud-sdk
   ];
 }

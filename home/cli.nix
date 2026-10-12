@@ -57,4 +57,6 @@
   };
 
   programs.claude-code.enable = true;
+
+  home.file.".kube/switch-config.yaml".source = ./switch-config.yaml;
 }
