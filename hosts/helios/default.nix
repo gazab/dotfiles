@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./nixflix.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/gaming.nix
   ];
@@ -14,7 +15,7 @@
   networking.networkmanager.enable = true;
   users.users.gazab.extraGroups = [ "networkmanager" ];
 
-  allowedUnfreePackages = [ "vscode" "nvidia-x11" "nvidia-settings" ];
+  allowedUnfreePackages = [ "vscode" "nvidia-x11" "nvidia-settings" "unrar" ];
   environment.systemPackages = [ pkgs.vscode ];
 
   # bolt manages Thunderbolt device authorization; without it the eGPU's
