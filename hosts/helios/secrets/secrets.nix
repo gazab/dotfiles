@@ -1,14 +1,9 @@
 let
-  # Your personal SSH public key(s), used so you can re-encrypt/edit secrets
-  # with `agenix -e` from your own machine. Replace with the output of e.g.
-  # `cat ~/.ssh/id_ed25519.pub`.
-  gazab = "ssh-ed25519 AAAA...REPLACE_WITH_YOUR_PUBLIC_KEY gazab";
+  # Personal key, used to re-encrypt/edit secrets with `agenix -e`.
+  gazab = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMX2ax/VTeWqknUlivIAx/IcTDYWHHcYXdB4/wHuBVEE gazab";
 
-  # helios's SSH host key, used so the host itself can decrypt secrets at
-  # activation time. Generated automatically by sshd on first boot; read it
-  # back with `ssh-keyscan helios` or `cat /etc/ssh/ssh_host_ed25519_key.pub`
-  # once the host exists, then replace the placeholder below.
-  helios = "ssh-ed25519 AAAA...REPLACE_WITH_HELIOS_HOST_KEY helios";
+  # helios's SSH host key, used so the host itself can decrypt secrets at activation time.
+  helios = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHmp/PTKSuQ36ktoi1hN5FiIzkCiR+ps3OYhTbUCRw0 helios";
 
   users = [ gazab ];
   systems = [ helios ];
