@@ -4,6 +4,11 @@
   # console) can resolve the same hostnames nginx already routes by.
   services.dnsmasq = {
     enable = true;
+    # Without this, NixOS points the *entire system's* DNS at 127.0.0.1
+    # (dnsmasq) by default -- but dnsmasq here only listens on tailscale0,
+    # so every lookup on helios itself would fail. This keeps dnsmasq
+    # scoped to just answering tailnet peers asking for *.nixflix.
+    resolveLocalQueries = false;
     settings = {
       interface = "tailscale0";
       bind-interfaces = true;
