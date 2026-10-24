@@ -6,6 +6,7 @@
     ./nixflix.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/gaming.nix
+    ../../modules/nixos/tailscale.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
