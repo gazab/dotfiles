@@ -4,7 +4,7 @@
   environment.systemPackages = [
     # for `agenix -e <secret>.age` to create/edit the encrypted secrets
     # referenced below
-    inputs.agenix.packages.${pkgs.system}.default
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # agenix decrypts secrets at activation using the host's SSH key
