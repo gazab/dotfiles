@@ -13,6 +13,12 @@
       interface = "tailscale0";
       bind-interfaces = true;
       no-resolv = true;
+      # nginx's addHostsEntries wrote *.nixflix -> 127.0.0.1 into
+      # helios's own /etc/hosts (correct for helios itself). dnsmasq
+      # reads /etc/hosts by default and an exact match there wins over
+      # the address= wildcard below, so tailnet peers were getting told
+      # 127.0.0.1 too -- which resolves to themselves, not to helios.
+      no-hosts = true;
       address = [ "/nixflix/100.99.188.26" ];
     };
   };
