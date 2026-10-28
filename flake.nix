@@ -7,6 +7,12 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixflix.url = "github:kiriwalawren/nixflix";
+    nixflix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, ... }@inputs:
@@ -27,6 +33,8 @@
           modules = [
             ./hosts/helios
             inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
+            inputs.agenix.nixosModules.default
+            inputs.nixflix.nixosModules.default
           ];
         };
 

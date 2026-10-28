@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  imports = [ ../../modules/nixos/tailscale.nix ];
+
   wsl.enable = true;
   wsl.defaultUser = "gazab";
 
