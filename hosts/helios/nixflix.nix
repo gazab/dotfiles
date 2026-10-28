@@ -81,6 +81,23 @@
         policy.isAdministrator = true;
         password._secret = config.age.secrets.jellyfin-admin-password.path;
       };
+
+      # Expose Jellyfin directly on the LAN (in addition to the nginx
+      # vhost) so Chromecast devices -- which can't join the tailnet or
+      # resolve jellyfin.nixflix -- can fetch streams directly from the
+      # server when casting, and so the official apps' local-network
+      # auto-discovery works.
+      openFirewall = true;
+      network = {
+        # Empty means "bind to all interfaces"; reverseProxy.enable
+        # defaults this to 127.0.0.1-only otherwise.
+        localNetworkAddresses = [ ];
+        # Tell LAN clients to use the direct address rather than
+        # whatever hostname/IP they happened to reach the server
+        # through. Update if helios's LAN IP changes (consider a DHCP
+        # reservation on the router to keep it stable).
+        publishedServerUriBySubnet = [ "192.168.0.0/24=http://192.168.0.15:8096" ];
+      };
     };
   };
 }
