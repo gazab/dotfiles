@@ -27,6 +27,11 @@
     ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
   '';
 
+  services.input-remapper = {
+    enable = true;
+    enableUdevRules = true;
+  };
+
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
   hardware.graphics = {
     enable = true;
@@ -37,6 +42,13 @@
     open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  # No disk swap is configured; zram gives Steam/games headroom before the
+  # OOM killer steps in, since 14G RAM alone gets exhausted by modern games.
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
   };
 
   # Do not change after install; see `man configuration.nix`.
