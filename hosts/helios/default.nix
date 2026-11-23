@@ -7,6 +7,7 @@
     ./nixflix-dns.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/gaming.nix
+    ../../modules/nixos/niri.nix
     ../../modules/nixos/tailscale.nix
   ];
 
