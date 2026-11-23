@@ -15,7 +15,9 @@
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
   networking.networkmanager.enable = true;
-  users.users.gazab.extraGroups = [ "networkmanager" ];
+  # gamemode's cpu/gpu-governor polkit rule only grants to this group;
+  # without it cpugovctl silently fails and the governor never switches.
+  users.users.gazab.extraGroups = [ "networkmanager" "gamemode" ];
 
   allowedUnfreePackages = [ "vscode" "nvidia-x11" "nvidia-settings" "unrar" ];
   environment.systemPackages = [ pkgs.vscode ];
@@ -42,6 +44,9 @@
     open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # keeps the eGPU's clocks from idling down between frames over
+    # Thunderbolt; without this the driver re-inits state on every wake.
+    nvidiaPersistenced = true;
   };
 
   # No disk swap is configured; zram gives Steam/games headroom before the
