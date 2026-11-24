@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./cli.nix ./noctalia.nix ];
+  imports = [ ./cli.nix ./niri.nix ./noctalia.nix ];
 
   home.username = "gazab";
   home.homeDirectory = "/home/gazab";
