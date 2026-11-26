@@ -3,8 +3,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./nixflix.nix
-    ./nixflix-dns.nix
+    # ./nixflix.nix
+    # ./nixflix-dns.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/niri.nix
